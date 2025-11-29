@@ -1,5 +1,6 @@
 import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { Header } from "@/components/dashboard/header";
+import { MobileSidebarOverlay } from "@/components/dashboard/mobile-sidebar-overlay";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
@@ -25,16 +26,17 @@ export default async function DashboardLayout({
         redirect("/login");
     }
     return (
-        <SidebarProvider>
+        <SidebarProvider defaultOpen={false}>
             <AppSidebar />
-            <SidebarInset>
+            <MobileSidebarOverlay />
+            <SidebarInset className="w-full">
                 <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-2 bg-gradient-to-r from-purple-950/40 via-neutral-900/40 to-purple-950/40 backdrop-blur-xl px-4 transition-[width,height] ease-linear border-b border-purple-500/20 shadow-lg shadow-purple-900/10">
-                    <SidebarTrigger className="text-gray-400 hover:text-purple-400 hover:bg-purple-500/10 transition-all duration-200 rounded-lg" />
+                    <SidebarTrigger className="text-gray-400 hover:text-purple-400 hover:bg-purple-500/10 transition-all duration-200 rounded-lg -ml-1" />
                     <div className="flex-1">
                         <Header />
                     </div>
                 </header>
-                <main className="flex flex-1 flex-col">
+                <main className="flex flex-1 flex-col w-full">
                     {children}
                 </main>
             </SidebarInset>

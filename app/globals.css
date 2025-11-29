@@ -186,6 +186,55 @@
   }
 }
 
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 .animate-shimmer {
   animation: shimmer 3s infinite;
   background: linear-gradient(to right,
@@ -201,4 +250,117 @@
 
 .animate-glow {
   animation: glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.3s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Smooth transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.3);
+}
+
+/* Mobile sidebar improvements */
+@media (max-width: 768px) {
+  /* Ensure sidebar uses overlay mode on mobile */
+  [data-sidebar="sidebar"] {
+    position: fixed !important;
+    z-index: 50 !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    left: 0;
+    top: 0;
+  }
+
+  /* Ensure content doesn't shift on mobile */
+  [data-sidebar="inset"] {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Make sidebar full width on mobile when open */
+  [data-sidebar="sidebar"][data-state="expanded"] {
+    width: 280px !important;
+    transform: translateX(0);
+  }
+
+  /* Hide sidebar when collapsed on mobile */
+  [data-sidebar="sidebar"][data-state="collapsed"] {
+    transform: translateX(-100%);
+    width: 280px !important;
+  }
+
+  /* Smooth sidebar transitions */
+  [data-sidebar="sidebar"] {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Make trigger button more prominent on mobile */
+  button[data-sidebar="trigger"] {
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Prevent body scroll when sidebar is open */
+  body:has([data-sidebar="sidebar"][data-state="expanded"]) {
+    overflow: hidden;
+  }
+}
+
+/* Tablet improvements */
+@media (min-width: 769px) and (max-width: 1024px) {
+  [data-sidebar="sidebar"][data-state="collapsed"] {
+    width: 60px !important;
+  }
+}
+
+/* Desktop - ensure proper behavior */
+@media (min-width: 1025px) {
+  [data-sidebar="sidebar"] {
+    position: relative !important;
+  }
 }
