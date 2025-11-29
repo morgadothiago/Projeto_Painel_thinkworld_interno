@@ -1,12 +1,29 @@
 import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { Header } from "@/components/dashboard/header";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
     children,
 }: {
     children: React.ReactNode;
 }) {
+    // Server-side session validation with error handling
+    let session = null;
+    try {
+        session = await getServerSession(authOptions);
+    } catch (error) {
+        // If JWT decryption fails, redirect to login
+        console.log("JWT error - redirecting to login");
+        redirect("/login");
+    }
+
+    // Redirect to login if not authenticated
+    if (!session) {
+        redirect("/login");
+    }
     return (
         <SidebarProvider>
             <AppSidebar />

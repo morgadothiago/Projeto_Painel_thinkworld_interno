@@ -1,7 +1,8 @@
 "use client";
 
 import { useSession, signIn, signOut } from "next-auth/react";
-import { createContext, useContext, ReactNode, useMemo } from "react";
+import { createContext, useContext, ReactNode, useMemo, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 interface User {
     id: string;
@@ -24,6 +25,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
     const { data: session, status } = useSession();
+    const router = useRouter();
 
     const user = (session?.user as User) || null;
     const isAuthenticated = status === "authenticated";
@@ -37,6 +39,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const logout = async (options?: any) => {
         return signOut(options);
     };
+
+    // Monitor session - if becomes unauthenticated, redirect to login
+    useEffect(() => {
+        if (status === "unauthenticated" && typeof window !== "undefined") {
+            // Only redirect if we're on a protected route
+            const isProtectedRoute = window.location.pathname.startsWith("/dashboard");
+            if (isProtectedRoute) {
+                router.push("/login");
+            }
+        }
+    }, [status, router]);
 
     const value = useMemo(
         () => ({

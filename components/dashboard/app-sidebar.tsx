@@ -286,7 +286,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                 </DropdownMenuGroup>
                                 <DropdownMenuSeparator className="bg-white/10" />
                                 <DropdownMenuItem
-                                    onClick={() => logout()}
+                                    onClick={() => logout({ callbackUrl: "/login" })}
                                     className="hover:bg-red-500/20 cursor-pointer text-red-400 hover:text-red-300 py-2.5 px-3 font-medium"
                                 >
                                     <LogOut className="mr-3 h-4 w-4" />

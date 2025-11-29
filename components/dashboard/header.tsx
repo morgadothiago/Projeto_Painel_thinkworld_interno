@@ -15,6 +15,8 @@ import {
 export function Header() {
     const { user } = useAuth();
 
+    console.log("user", user);
+
     return (
         <div className="flex items-center justify-between w-full gap-2 md:gap-4">
             {/* Left: Title with vibrant gradient - Responsive */}
@@ -23,7 +25,7 @@ export function Header() {
                     <h1 className="text-lg md:text-xl font-bold bg-gradient-to-r from-purple-300 via-fuchsia-300 to-teal-300 bg-clip-text text-transparent tracking-tight leading-tight truncate">
                         Dashboard
                     </h1>
-                    <p className="hidden sm:block text-[10px] text-gray-300 font-medium leading-tight">Bem-vindo de volta! 👋</p>
+                    <p className="hidden sm:block text-[10px] text-gray-300 font-medium leading-tight">Bem-vindo de volta! 👋 {user?.name}</p>
                 </div>
             </div>
 
