@@ -30,39 +30,39 @@ export const menuAdmin: MenuItem[] = [
         description: "Visão geral do sistema"
     },
     {
-        title: "Caixa",
+        title: "caixa",
         path: "/dashboard/admin/caixa",
         icon: BoxIcon,
         description: "Fluxo de caixa"
     },
     {
         title: "Usuários",
-        path: "/dashboard/users",
+        path: "/dashboard/admin/users",
         icon: Users,
         description: "Gerenciar usuários do sistema",
         badge: "3"
     },
     {
         title: "Relatórios",
-        path: "/dashboard/reports",
+        path: "/dashboard/admin/reports",
         icon: BarChart3,
         description: "Relatórios e analytics"
     },
     {
         title: "Analytics",
-        path: "/dashboard/analytics",
+        path: "/dashboard/admin/analytics",
         icon: TrendingUp,
         description: "Métricas e performance"
     },
     {
         title: "Projetos",
-        path: "/dashboard/projects",
+        path: "/dashboard/admin/projects",
         icon: FolderKanban,
         description: "Gerenciar projetos"
     },
     {
         title: "Calendário",
-        path: "/dashboard/calendar",
+        path: "/dashboard/admin/calendar",
         icon: Calendar,
         description: "Agenda e eventos"
     },
@@ -73,24 +73,7 @@ export const menuAdmin: MenuItem[] = [
         description: "Central de mensagens",
         badge: "5"
     },
-    {
-        title: "Segurança",
-        path: "/dashboard/security",
-        icon: ShieldCheck,
-        description: "Configurações de segurança"
-    },
-    {
-        title: "Banco de Dados",
-        path: "/dashboard/database",
-        icon: Database,
-        description: "Gerenciar dados"
-    },
-    {
-        title: "Configurações",
-        path: "/dashboard/settings",
-        icon: Settings,
-        description: "Configurações do sistema"
-    },
+
 ];
 
 export const menuColaborator: MenuItem[] = [
