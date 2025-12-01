@@ -1,10 +1,11 @@
 "use client";
 
 import { useAuth } from "@/components/providers/auth-context";
-import { AdminDashboard } from "@/app/dashboard/admin/admin-dashboard";
+
 import { ColaboradorDashboard } from "@/app/dashboard/colaborator/colaborador-dashboard";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { AdminDashboard } from "./admin/page";
 
 export default function DashboardPage() {
     const { user, role, isAuthenticated, isLoading } = useAuth();

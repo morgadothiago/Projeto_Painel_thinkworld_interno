@@ -156,7 +156,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     </SidebarGroupLabel>
                     <SidebarMenu className="gap-1 px-2">
                         {menuItems.map((item) => (
-                            <MenuItemComponent key={item.title} item={item} />
+                            <MenuItemComponent key={item.title} item={item} tooltip={false} />
                         ))}
                     </SidebarMenu>
                 </SidebarGroup>

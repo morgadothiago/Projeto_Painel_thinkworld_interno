@@ -1,23 +1,24 @@
 import {
-  LayoutDashboard,
-  Users,
-  Settings,
-  FileText,
-  CheckSquare,
-  User,
-  BarChart3,
-  ShieldCheck,
-  Calendar,
-  MessageSquare,
-  FolderKanban,
-  Clock,
-  Award,
-  TrendingUp,
-  UserCog,
-  Database,
-  Bell,
-  Search,
-  Briefcase
+    LayoutDashboard,
+    Users,
+    Settings,
+    FileText,
+    CheckSquare,
+    User,
+    BarChart3,
+    ShieldCheck,
+    Calendar,
+    MessageSquare,
+    FolderKanban,
+    Clock,
+    Award,
+    TrendingUp,
+    UserCog,
+    Database,
+    Bell,
+    Search,
+    Briefcase,
+    BoxIcon
 } from "lucide-react";
 import { MenuItem } from "@/components/dashboard/menu-item";
 
@@ -27,6 +28,12 @@ export const menuAdmin: MenuItem[] = [
         path: "/dashboard",
         icon: LayoutDashboard,
         description: "Visão geral do sistema"
+    },
+    {
+        title: "Caixa",
+        path: "/dashboard/admin/caixa",
+        icon: BoxIcon,
+        description: "Fluxo de caixa"
     },
     {
         title: "Usuários",
